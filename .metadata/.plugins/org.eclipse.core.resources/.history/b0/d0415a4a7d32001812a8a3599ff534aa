@@ -1,0 +1,33 @@
+package service;
+
+import java.util.ArrayList;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+
+import pojo.*;
+
+@Path("/ss")
+public class StudentskaSluzba {
+	private static ArrayList<Smer> smerovi = new ArrayList<>(); // dodao static da se pri novom requestu ne bi menjala opet vrednost
+	
+	static {
+		Smer smer1 = new Smer();
+		smer1.setId(1);
+		smer1.setNaziv("Pera");
+		smerovi.add(smer1);
+		Smer smer2 = new Smer();
+		smer1.setId(2);
+		smer1.setNaziv("Djura");
+		smerovi.add(smer2);
+	} //static blok se samo jendom izvrsava za sve instance StudenskeSluzbe
+	
+	@GET
+	@Path("/smerovi")
+	public ArrayList<Smer> getSmerovi () {
+		return smerovi;
+	}
+	
+	@PUT
+	public Student addStudent(@)
+}

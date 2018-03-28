@@ -1,0 +1,78 @@
+package pojo;
+
+import java.util.ArrayList;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.core.MediaType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
+public class Smer {
+	private int id;
+	private String naziv;
+	private boolean obrisan = false;
+	private ArrayList<Student> studenti = new ArrayList<Student>();
+	
+	public void addStudent(Student s) {
+		this.studenti.add(s);
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getNaziv() {
+		return naziv;
+	}
+	public void setNaziv(String naziv) {
+		this.naziv = naziv;
+	}
+	
+	public boolean getObrisan() {
+		return this.obrisan;
+	}
+	
+	@GET
+	@Path("/studenti") //nadovezuje se na path koji je bio u lokatoru
+	public ArrayList<Student> getStudenti() {
+		return studenti;
+	}
+	
+	@GET
+	@Path("/") //stoji prazno jer smao nastavlja na onu metodu iz StudenskeSluzbe.java
+	public Smer getThis() {
+		return this;
+	}
+	
+//	jos jedna lokator metoda
+//	da bi vratila studenta mora da implementiramo konkretnu metodu u Student.java
+	
+	@Path("/studenti/{studentId}")
+	public Student getStudentById (@PathParam("studentId") int studentId) {
+		for (Student s : this.studenti)
+			if (s.getId() == studentId)
+				return s;
+		return null;
+	}
+	
+	@PUT
+	@Path("/update")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Smer updateSmer(Smer smer) {
+		naziv = smer.getNaziv();
+		return this;
+	}
+	
+	@DELETE
+	@Path("/delete")
+	public void delete() {
+		obrisan = true;
+	}
+}

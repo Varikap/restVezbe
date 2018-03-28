@@ -1,0 +1,19 @@
+package service;
+
+import java.util.ArrayList;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+
+import pojo.*;
+
+@Path("/ss")
+public class StudentskaSluzba {
+	private static ArrayList<Smer> smerovi = new ArrayList<>(); // dodao static da se pri novom requestu ne bi menjala opet vrednost
+	
+	@GET
+	@Path("/smerovi")
+	public ArrayList<Smer> getSmerovi () {
+		return smerovi;
+	}
+}

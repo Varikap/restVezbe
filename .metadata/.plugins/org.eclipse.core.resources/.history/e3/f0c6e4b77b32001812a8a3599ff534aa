@@ -1,0 +1,12 @@
+package service;
+
+import java.util.ArrayList;
+
+import javax.ws.rs.Path;
+
+import pojo.*;
+
+@Path("/ss")
+public class StudentskaSluzba {
+	private ArrayList<Smer> smerovi = new ArrayList<>();
+}
