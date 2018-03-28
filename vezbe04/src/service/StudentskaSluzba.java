@@ -18,7 +18,7 @@ import pojo.*;
 @Produces(MediaType.APPLICATION_JSON)
 public class StudentskaSluzba {
 	private static ArrayList<Smer> smerovi = new ArrayList<>(); // dodao static da se pri novom requestu ne bi menjala opet vrednost
-	
+//	AKO HOCES DA PRAVIS SVOJ KONSTRUKTOR ONDA DODAJ I PRAZAN KONSTRUKTOR NA SVE KLASE!!!!
 	static {
 		Smer smer1 = new Smer();
 		smer1.setId(1);

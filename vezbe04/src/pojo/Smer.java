@@ -46,7 +46,7 @@ public class Smer {
 	}
 	
 	@GET
-	@Path("/") //stoji prazno jer smao nastavlja na onu metodu iz StudenskeSluzbe.java
+	@Path("/") //stoji prazno jer smao nastavlja na onu metodu iz StudenskeSluzbe.java @Path("/smerovi/{id}")
 	public Smer getThis() {
 		return this;
 	}
